@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springBoot.test.dao.TintransitDetailPoMapper" >
+  <resultMap id="BaseResultMap" type="com.springBoot.test.model.TintransitDetailPo" >
+    <id column="PKID" property="pkid" jdbcType="DECIMAL" />
+    <result column="INTRA_DETAIL_CODE" property="intraDetailCode" jdbcType="VARCHAR" />
+    <result column="INTRANSIT_CODE" property="intransitCode" jdbcType="VARCHAR" />
+    <result column="INTRANSIT_ITEM_ID" property="intransitItemId" jdbcType="DECIMAL" />
+    <result column="BILL_CODE" property="billCode" jdbcType="VARCHAR" />
+    <result column="LOGISTICS_NUM" property="logisticsNum" jdbcType="VARCHAR" />
+    <result column="SHIP_TYPE" property="shipType" jdbcType="DECIMAL" />
+    <result column="SHIP_LOCATION" property="shipLocation" jdbcType="VARCHAR" />
+    <result column="TERMINI" property="termini" jdbcType="VARCHAR" />
+    <result column="WAREHOUSE_ID" property="warehouseId" jdbcType="DECIMAL" />
+    <result column="WAREHOUSE_AREA" property="warehouseArea" jdbcType="VARCHAR" />
+    <result column="TRANSPORT_WEIGHT" property="transportWeight" jdbcType="DECIMAL" />
+    <result column="COMPLETE_DATE" property="completeDate" jdbcType="TIMESTAMP" />
+    <result column="INTRA_DETAIL_STATUS" property="intraDetailStatus" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_BY_NAME" property="lastModifiedByName" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_BY" property="lastModifiedBy" jdbcType="DECIMAL" />
+    <result column="LAST_MODIFIED_IP" property="lastModifiedIp" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_TIME" property="lastModifiedTime" jdbcType="TIMESTAMP" />
+    <result column="ADDED_BY_NAME" property="addedByName" jdbcType="VARCHAR" />
+    <result column="ADDED_BY" property="addedBy" jdbcType="DECIMAL" />
+    <result column="ADDED_TIME" property="addedTime" jdbcType="TIMESTAMP" />
+    <result column="VALID" property="valid" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PKID, INTRA_DETAIL_CODE, INTRANSIT_CODE, INTRANSIT_ITEM_ID, BILL_CODE, LOGISTICS_NUM, 
+    SHIP_TYPE, SHIP_LOCATION, TERMINI, WAREHOUSE_ID, WAREHOUSE_AREA, TRANSPORT_WEIGHT, 
+    COMPLETE_DATE, INTRA_DETAIL_STATUS, REMARK, LAST_MODIFIED_BY_NAME, LAST_MODIFIED_BY, 
+    LAST_MODIFIED_IP, LAST_MODIFIED_TIME, ADDED_BY_NAME, ADDED_BY, ADDED_TIME, VALID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from TINTRANSIT_DETAIL
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from TINTRANSIT_DETAIL
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.springBoot.test.model.TintransitDetailPo" >
+    insert into TINTRANSIT_DETAIL (PKID, INTRA_DETAIL_CODE, INTRANSIT_CODE, 
+      INTRANSIT_ITEM_ID, BILL_CODE, LOGISTICS_NUM, 
+      SHIP_TYPE, SHIP_LOCATION, TERMINI, 
+      WAREHOUSE_ID, WAREHOUSE_AREA, TRANSPORT_WEIGHT, 
+      COMPLETE_DATE, INTRA_DETAIL_STATUS, REMARK, 
+      LAST_MODIFIED_BY_NAME, LAST_MODIFIED_BY, LAST_MODIFIED_IP, 
+      LAST_MODIFIED_TIME, ADDED_BY_NAME, ADDED_BY, 
+      ADDED_TIME, VALID)
+    values (#{pkid,jdbcType=DECIMAL}, #{intraDetailCode,jdbcType=VARCHAR}, #{intransitCode,jdbcType=VARCHAR}, 
+      #{intransitItemId,jdbcType=DECIMAL}, #{billCode,jdbcType=VARCHAR}, #{logisticsNum,jdbcType=VARCHAR}, 
+      #{shipType,jdbcType=DECIMAL}, #{shipLocation,jdbcType=VARCHAR}, #{termini,jdbcType=VARCHAR}, 
+      #{warehouseId,jdbcType=DECIMAL}, #{warehouseArea,jdbcType=VARCHAR}, #{transportWeight,jdbcType=DECIMAL}, 
+      #{completeDate,jdbcType=TIMESTAMP}, #{intraDetailStatus,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
+      #{lastModifiedByName,jdbcType=VARCHAR}, #{lastModifiedBy,jdbcType=DECIMAL}, #{lastModifiedIp,jdbcType=VARCHAR}, 
+      #{lastModifiedTime,jdbcType=TIMESTAMP}, #{addedByName,jdbcType=VARCHAR}, #{addedBy,jdbcType=DECIMAL}, 
+      #{addedTime,jdbcType=TIMESTAMP}, #{valid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springBoot.test.model.TintransitDetailPo" >
+    insert into TINTRANSIT_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        PKID,
+      </if>
+      <if test="intraDetailCode != null" >
+        INTRA_DETAIL_CODE,
+      </if>
+      <if test="intransitCode != null" >
+        INTRANSIT_CODE,
+      </if>
+      <if test="intransitItemId != null" >
+        INTRANSIT_ITEM_ID,
+      </if>
+      <if test="billCode != null" >
+        BILL_CODE,
+      </if>
+      <if test="logisticsNum != null" >
+        LOGISTICS_NUM,
+      </if>
+      <if test="shipType != null" >
+        SHIP_TYPE,
+      </if>
+      <if test="shipLocation != null" >
+        SHIP_LOCATION,
+      </if>
+      <if test="termini != null" >
+        TERMINI,
+      </if>
+      <if test="warehouseId != null" >
+        WAREHOUSE_ID,
+      </if>
+      <if test="warehouseArea != null" >
+        WAREHOUSE_AREA,
+      </if>
+      <if test="transportWeight != null" >
+        TRANSPORT_WEIGHT,
+      </if>
+      <if test="completeDate != null" >
+        COMPLETE_DATE,
+      </if>
+      <if test="intraDetailStatus != null" >
+        INTRA_DETAIL_STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="lastModifiedByName != null" >
+        LAST_MODIFIED_BY_NAME,
+      </if>
+      <if test="lastModifiedBy != null" >
+        LAST_MODIFIED_BY,
+      </if>
+      <if test="lastModifiedIp != null" >
+        LAST_MODIFIED_IP,
+      </if>
+      <if test="lastModifiedTime != null" >
+        LAST_MODIFIED_TIME,
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME,
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY,
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME,
+      </if>
+      <if test="valid != null" >
+        VALID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        #{pkid,jdbcType=DECIMAL},
+      </if>
+      <if test="intraDetailCode != null" >
+        #{intraDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intransitCode != null" >
+        #{intransitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intransitItemId != null" >
+        #{intransitItemId,jdbcType=DECIMAL},
+      </if>
+      <if test="billCode != null" >
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsNum != null" >
+        #{logisticsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="shipType != null" >
+        #{shipType,jdbcType=DECIMAL},
+      </if>
+      <if test="shipLocation != null" >
+        #{shipLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="termini != null" >
+        #{termini,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseArea != null" >
+        #{warehouseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="transportWeight != null" >
+        #{transportWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="completeDate != null" >
+        #{completeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intraDetailStatus != null" >
+        #{intraDetailStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedByName != null" >
+        #{lastModifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModifiedIp != null" >
+        #{lastModifiedIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTime != null" >
+        #{lastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedByName != null" >
+        #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="addedBy != null" >
+        #{addedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="addedTime != null" >
+        #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springBoot.test.model.TintransitDetailPo" >
+    update TINTRANSIT_DETAIL
+    <set >
+      <if test="intraDetailCode != null" >
+        INTRA_DETAIL_CODE = #{intraDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intransitCode != null" >
+        INTRANSIT_CODE = #{intransitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intransitItemId != null" >
+        INTRANSIT_ITEM_ID = #{intransitItemId,jdbcType=DECIMAL},
+      </if>
+      <if test="billCode != null" >
+        BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsNum != null" >
+        LOGISTICS_NUM = #{logisticsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="shipType != null" >
+        SHIP_TYPE = #{shipType,jdbcType=DECIMAL},
+      </if>
+      <if test="shipLocation != null" >
+        SHIP_LOCATION = #{shipLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="termini != null" >
+        TERMINI = #{termini,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseId != null" >
+        WAREHOUSE_ID = #{warehouseId,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseArea != null" >
+        WAREHOUSE_AREA = #{warehouseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="transportWeight != null" >
+        TRANSPORT_WEIGHT = #{transportWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="completeDate != null" >
+        COMPLETE_DATE = #{completeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intraDetailStatus != null" >
+        INTRA_DETAIL_STATUS = #{intraDetailStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedByName != null" >
+        LAST_MODIFIED_BY_NAME = #{lastModifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        LAST_MODIFIED_BY = #{lastModifiedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModifiedIp != null" >
+        LAST_MODIFIED_IP = #{lastModifiedIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTime != null" >
+        LAST_MODIFIED_TIME = #{lastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY = #{addedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        VALID = #{valid,jdbcType=CHAR},
+      </if>
+    </set>
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springBoot.test.model.TintransitDetailPo" >
+    update TINTRANSIT_DETAIL
+    set INTRA_DETAIL_CODE = #{intraDetailCode,jdbcType=VARCHAR},
+      INTRANSIT_CODE = #{intransitCode,jdbcType=VARCHAR},
+      INTRANSIT_ITEM_ID = #{intransitItemId,jdbcType=DECIMAL},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      LOGISTICS_NUM = #{logisticsNum,jdbcType=VARCHAR},
+      SHIP_TYPE = #{shipType,jdbcType=DECIMAL},
+      SHIP_LOCATION = #{shipLocation,jdbcType=VARCHAR},
+      TERMINI = #{termini,jdbcType=VARCHAR},
+      WAREHOUSE_ID = #{warehouseId,jdbcType=DECIMAL},
+      WAREHOUSE_AREA = #{warehouseArea,jdbcType=VARCHAR},
+      TRANSPORT_WEIGHT = #{transportWeight,jdbcType=DECIMAL},
+      COMPLETE_DATE = #{completeDate,jdbcType=TIMESTAMP},
+      INTRA_DETAIL_STATUS = #{intraDetailStatus,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      LAST_MODIFIED_BY_NAME = #{lastModifiedByName,jdbcType=VARCHAR},
+      LAST_MODIFIED_BY = #{lastModifiedBy,jdbcType=DECIMAL},
+      LAST_MODIFIED_IP = #{lastModifiedIp,jdbcType=VARCHAR},
+      LAST_MODIFIED_TIME = #{lastModifiedTime,jdbcType=TIMESTAMP},
+      ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      ADDED_BY = #{addedBy,jdbcType=DECIMAL},
+      ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      VALID = #{valid,jdbcType=CHAR}
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+</mapper>

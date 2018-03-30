@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springBoot.test.dao.TintransitItemPoMapper" >
+  <resultMap id="BaseResultMap" type="com.springBoot.test.model.TintransitItemPo" >
+    <id column="PKID" property="pkid" jdbcType="DECIMAL" />
+    <result column="INTRANSIT_CODE" property="intransitCode" jdbcType="VARCHAR" />
+    <result column="INTRANSIT_TYPE" property="intransitType" jdbcType="DECIMAL" />
+    <result column="PROPOSE_DATE" property="proposeDate" jdbcType="TIMESTAMP" />
+    <result column="CONTRACT_WEIGHT" property="contractWeight" jdbcType="DECIMAL" />
+    <result column="PROPOSE_COST" property="proposeCost" jdbcType="DECIMAL" />
+    <result column="ACTUAL_WEIGHT" property="actualWeight" jdbcType="DECIMAL" />
+    <result column="ESTINATE_COST" property="estinateCost" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_BY_NAME" property="lastModifiedByName" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_BY" property="lastModifiedBy" jdbcType="DECIMAL" />
+    <result column="LAST_MODIFIED_IP" property="lastModifiedIp" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_TIME" property="lastModifiedTime" jdbcType="TIMESTAMP" />
+    <result column="ADDED_BY_NAME" property="addedByName" jdbcType="VARCHAR" />
+    <result column="ADDED_BY" property="addedBy" jdbcType="DECIMAL" />
+    <result column="ADDED_TIME" property="addedTime" jdbcType="TIMESTAMP" />
+    <result column="VALID" property="valid" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PKID, INTRANSIT_CODE, INTRANSIT_TYPE, PROPOSE_DATE, CONTRACT_WEIGHT, PROPOSE_COST, 
+    ACTUAL_WEIGHT, ESTINATE_COST, REMARK, LAST_MODIFIED_BY_NAME, LAST_MODIFIED_BY, LAST_MODIFIED_IP, 
+    LAST_MODIFIED_TIME, ADDED_BY_NAME, ADDED_BY, ADDED_TIME, VALID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from TINTRANSIT_ITEM
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from TINTRANSIT_ITEM
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.springBoot.test.model.TintransitItemPo" >
+    insert into TINTRANSIT_ITEM (PKID, INTRANSIT_CODE, INTRANSIT_TYPE, 
+      PROPOSE_DATE, CONTRACT_WEIGHT, PROPOSE_COST, 
+      ACTUAL_WEIGHT, ESTINATE_COST, REMARK, 
+      LAST_MODIFIED_BY_NAME, LAST_MODIFIED_BY, LAST_MODIFIED_IP, 
+      LAST_MODIFIED_TIME, ADDED_BY_NAME, ADDED_BY, 
+      ADDED_TIME, VALID)
+    values (#{pkid,jdbcType=DECIMAL}, #{intransitCode,jdbcType=VARCHAR}, #{intransitType,jdbcType=DECIMAL}, 
+      #{proposeDate,jdbcType=TIMESTAMP}, #{contractWeight,jdbcType=DECIMAL}, #{proposeCost,jdbcType=DECIMAL}, 
+      #{actualWeight,jdbcType=DECIMAL}, #{estinateCost,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
+      #{lastModifiedByName,jdbcType=VARCHAR}, #{lastModifiedBy,jdbcType=DECIMAL}, #{lastModifiedIp,jdbcType=VARCHAR}, 
+      #{lastModifiedTime,jdbcType=TIMESTAMP}, #{addedByName,jdbcType=VARCHAR}, #{addedBy,jdbcType=DECIMAL}, 
+      #{addedTime,jdbcType=TIMESTAMP}, #{valid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.springBoot.test.model.TintransitItemPo" >
+    insert into TINTRANSIT_ITEM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        PKID,
+      </if>
+      <if test="intransitCode != null" >
+        INTRANSIT_CODE,
+      </if>
+      <if test="intransitType != null" >
+        INTRANSIT_TYPE,
+      </if>
+      <if test="proposeDate != null" >
+        PROPOSE_DATE,
+      </if>
+      <if test="contractWeight != null" >
+        CONTRACT_WEIGHT,
+      </if>
+      <if test="proposeCost != null" >
+        PROPOSE_COST,
+      </if>
+      <if test="actualWeight != null" >
+        ACTUAL_WEIGHT,
+      </if>
+      <if test="estinateCost != null" >
+        ESTINATE_COST,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="lastModifiedByName != null" >
+        LAST_MODIFIED_BY_NAME,
+      </if>
+      <if test="lastModifiedBy != null" >
+        LAST_MODIFIED_BY,
+      </if>
+      <if test="lastModifiedIp != null" >
+        LAST_MODIFIED_IP,
+      </if>
+      <if test="lastModifiedTime != null" >
+        LAST_MODIFIED_TIME,
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME,
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY,
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME,
+      </if>
+      <if test="valid != null" >
+        VALID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        #{pkid,jdbcType=DECIMAL},
+      </if>
+      <if test="intransitCode != null" >
+        #{intransitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intransitType != null" >
+        #{intransitType,jdbcType=DECIMAL},
+      </if>
+      <if test="proposeDate != null" >
+        #{proposeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractWeight != null" >
+        #{contractWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="proposeCost != null" >
+        #{proposeCost,jdbcType=DECIMAL},
+      </if>
+      <if test="actualWeight != null" >
+        #{actualWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="estinateCost != null" >
+        #{estinateCost,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedByName != null" >
+        #{lastModifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModifiedIp != null" >
+        #{lastModifiedIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTime != null" >
+        #{lastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedByName != null" >
+        #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="addedBy != null" >
+        #{addedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="addedTime != null" >
+        #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springBoot.test.model.TintransitItemPo" >
+    update TINTRANSIT_ITEM
+    <set >
+      <if test="intransitCode != null" >
+        INTRANSIT_CODE = #{intransitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intransitType != null" >
+        INTRANSIT_TYPE = #{intransitType,jdbcType=DECIMAL},
+      </if>
+      <if test="proposeDate != null" >
+        PROPOSE_DATE = #{proposeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractWeight != null" >
+        CONTRACT_WEIGHT = #{contractWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="proposeCost != null" >
+        PROPOSE_COST = #{proposeCost,jdbcType=DECIMAL},
+      </if>
+      <if test="actualWeight != null" >
+        ACTUAL_WEIGHT = #{actualWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="estinateCost != null" >
+        ESTINATE_COST = #{estinateCost,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedByName != null" >
+        LAST_MODIFIED_BY_NAME = #{lastModifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        LAST_MODIFIED_BY = #{lastModifiedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModifiedIp != null" >
+        LAST_MODIFIED_IP = #{lastModifiedIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTime != null" >
+        LAST_MODIFIED_TIME = #{lastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY = #{addedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        VALID = #{valid,jdbcType=CHAR},
+      </if>
+    </set>
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springBoot.test.model.TintransitItemPo" >
+    update TINTRANSIT_ITEM
+    set INTRANSIT_CODE = #{intransitCode,jdbcType=VARCHAR},
+      INTRANSIT_TYPE = #{intransitType,jdbcType=DECIMAL},
+      PROPOSE_DATE = #{proposeDate,jdbcType=TIMESTAMP},
+      CONTRACT_WEIGHT = #{contractWeight,jdbcType=DECIMAL},
+      PROPOSE_COST = #{proposeCost,jdbcType=DECIMAL},
+      ACTUAL_WEIGHT = #{actualWeight,jdbcType=DECIMAL},
+      ESTINATE_COST = #{estinateCost,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      LAST_MODIFIED_BY_NAME = #{lastModifiedByName,jdbcType=VARCHAR},
+      LAST_MODIFIED_BY = #{lastModifiedBy,jdbcType=DECIMAL},
+      LAST_MODIFIED_IP = #{lastModifiedIp,jdbcType=VARCHAR},
+      LAST_MODIFIED_TIME = #{lastModifiedTime,jdbcType=TIMESTAMP},
+      ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      ADDED_BY = #{addedBy,jdbcType=DECIMAL},
+      ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      VALID = #{valid,jdbcType=CHAR}
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+</mapper>

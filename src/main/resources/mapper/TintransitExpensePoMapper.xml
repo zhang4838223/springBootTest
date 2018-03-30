@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springBoot.test.dao.TintransitExpensePoMapper" >
+  <resultMap id="BaseResultMap" type="com.springBoot.test.model.TintransitExpensePo" >
+    <id column="PKID" property="pkid" jdbcType="DECIMAL" />
+    <result column="INTRA_EXPENSE_CODE" property="intraExpenseCode" jdbcType="VARCHAR" />
+    <result column="INTRA_DETAIL_CODE" property="intraDetailCode" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="DECIMAL" />
+    <result column="SUBJECT" property="subject" jdbcType="VARCHAR" />
+    <result column="UNIT_PRICE" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="TAX_RATE" property="taxRate" jdbcType="DECIMAL" />
+    <result column="WEIGHT" property="weight" jdbcType="DECIMAL" />
+    <result column="PLAN_EXPENSE" property="planExpense" jdbcType="DECIMAL" />
+    <result column="PREDICT_EXPENSE" property="predictExpense" jdbcType="DECIMAL" />
+    <result column="WAREHOUSE_ID" property="warehouseId" jdbcType="DECIMAL" />
+    <result column="WAREHOUSE_AREA" property="warehouseArea" jdbcType="VARCHAR" />
+    <result column="TRANSPORT_COMPANY" property="transportCompany" jdbcType="VARCHAR" />
+    <result column="TRANSPORT_COMPANY_ID" property="transportCompanyId" jdbcType="VARCHAR" />
+    <result column="EXPENSE_STATUS" property="expenseStatus" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_BY_NAME" property="lastModifiedByName" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_BY" property="lastModifiedBy" jdbcType="DECIMAL" />
+    <result column="LAST_MODIFIED_IP" property="lastModifiedIp" jdbcType="VARCHAR" />
+    <result column="LAST_MODIFIED_TIME" property="lastModifiedTime" jdbcType="TIMESTAMP" />
+    <result column="ADDED_BY_NAME" property="addedByName" jdbcType="VARCHAR" />
+    <result column="ADDED_BY" property="addedBy" jdbcType="DECIMAL" />
+    <result column="ADDED_TIME" property="addedTime" jdbcType="TIMESTAMP" />
+    <result column="VALID" property="valid" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PKID, INTRA_EXPENSE_CODE, INTRA_DETAIL_CODE, TYPE, SUBJECT, UNIT_PRICE, TAX_RATE, 
+    WEIGHT, PLAN_EXPENSE, PREDICT_EXPENSE, WAREHOUSE_ID, WAREHOUSE_AREA, TRANSPORT_COMPANY, 
+    TRANSPORT_COMPANY_ID, EXPENSE_STATUS, REMARK, LAST_MODIFIED_BY_NAME, LAST_MODIFIED_BY, 
+    LAST_MODIFIED_IP, LAST_MODIFIED_TIME, ADDED_BY_NAME, ADDED_BY, ADDED_TIME, VALID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from TINTRANSIT_EXPENSE
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from TINTRANSIT_EXPENSE
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.springBoot.test.model.TintransitExpensePo" >
+    insert into TINTRANSIT_EXPENSE (PKID, INTRA_EXPENSE_CODE, INTRA_DETAIL_CODE, 
+      TYPE, SUBJECT, UNIT_PRICE, 
+      TAX_RATE, WEIGHT, PLAN_EXPENSE, 
+      PREDICT_EXPENSE, WAREHOUSE_ID, WAREHOUSE_AREA, 
+      TRANSPORT_COMPANY, TRANSPORT_COMPANY_ID, EXPENSE_STATUS, 
+      REMARK, LAST_MODIFIED_BY_NAME, LAST_MODIFIED_BY, 
+      LAST_MODIFIED_IP, LAST_MODIFIED_TIME, ADDED_BY_NAME, 
+      ADDED_BY, ADDED_TIME, VALID
+      )
+    values (#{pkid,jdbcType=DECIMAL}, #{intraExpenseCode,jdbcType=VARCHAR}, #{intraDetailCode,jdbcType=VARCHAR}, 
+      #{type,jdbcType=DECIMAL}, #{subject,jdbcType=VARCHAR}, #{unitPrice,jdbcType=DECIMAL}, 
+      #{taxRate,jdbcType=DECIMAL}, #{weight,jdbcType=DECIMAL}, #{planExpense,jdbcType=DECIMAL}, 
+      #{predictExpense,jdbcType=DECIMAL}, #{warehouseId,jdbcType=DECIMAL}, #{warehouseArea,jdbcType=VARCHAR}, 
+      #{transportCompany,jdbcType=VARCHAR}, #{transportCompanyId,jdbcType=VARCHAR}, #{expenseStatus,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{lastModifiedByName,jdbcType=VARCHAR}, #{lastModifiedBy,jdbcType=DECIMAL}, 
+      #{lastModifiedIp,jdbcType=VARCHAR}, #{lastModifiedTime,jdbcType=TIMESTAMP}, #{addedByName,jdbcType=VARCHAR}, 
+      #{addedBy,jdbcType=DECIMAL}, #{addedTime,jdbcType=TIMESTAMP}, #{valid,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.springBoot.test.model.TintransitExpensePo" >
+    insert into TINTRANSIT_EXPENSE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        PKID,
+      </if>
+      <if test="intraExpenseCode != null" >
+        INTRA_EXPENSE_CODE,
+      </if>
+      <if test="intraDetailCode != null" >
+        INTRA_DETAIL_CODE,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="subject != null" >
+        SUBJECT,
+      </if>
+      <if test="unitPrice != null" >
+        UNIT_PRICE,
+      </if>
+      <if test="taxRate != null" >
+        TAX_RATE,
+      </if>
+      <if test="weight != null" >
+        WEIGHT,
+      </if>
+      <if test="planExpense != null" >
+        PLAN_EXPENSE,
+      </if>
+      <if test="predictExpense != null" >
+        PREDICT_EXPENSE,
+      </if>
+      <if test="warehouseId != null" >
+        WAREHOUSE_ID,
+      </if>
+      <if test="warehouseArea != null" >
+        WAREHOUSE_AREA,
+      </if>
+      <if test="transportCompany != null" >
+        TRANSPORT_COMPANY,
+      </if>
+      <if test="transportCompanyId != null" >
+        TRANSPORT_COMPANY_ID,
+      </if>
+      <if test="expenseStatus != null" >
+        EXPENSE_STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="lastModifiedByName != null" >
+        LAST_MODIFIED_BY_NAME,
+      </if>
+      <if test="lastModifiedBy != null" >
+        LAST_MODIFIED_BY,
+      </if>
+      <if test="lastModifiedIp != null" >
+        LAST_MODIFIED_IP,
+      </if>
+      <if test="lastModifiedTime != null" >
+        LAST_MODIFIED_TIME,
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME,
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY,
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME,
+      </if>
+      <if test="valid != null" >
+        VALID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkid != null" >
+        #{pkid,jdbcType=DECIMAL},
+      </if>
+      <if test="intraExpenseCode != null" >
+        #{intraExpenseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intraDetailCode != null" >
+        #{intraDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null" >
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="planExpense != null" >
+        #{planExpense,jdbcType=DECIMAL},
+      </if>
+      <if test="predictExpense != null" >
+        #{predictExpense,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseId != null" >
+        #{warehouseId,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseArea != null" >
+        #{warehouseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="transportCompany != null" >
+        #{transportCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="transportCompanyId != null" >
+        #{transportCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="expenseStatus != null" >
+        #{expenseStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedByName != null" >
+        #{lastModifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        #{lastModifiedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModifiedIp != null" >
+        #{lastModifiedIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTime != null" >
+        #{lastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedByName != null" >
+        #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="addedBy != null" >
+        #{addedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="addedTime != null" >
+        #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.springBoot.test.model.TintransitExpensePo" >
+    update TINTRANSIT_EXPENSE
+    <set >
+      <if test="intraExpenseCode != null" >
+        INTRA_EXPENSE_CODE = #{intraExpenseCode,jdbcType=VARCHAR},
+      </if>
+      <if test="intraDetailCode != null" >
+        INTRA_DETAIL_CODE = #{intraDetailCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="subject != null" >
+        SUBJECT = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="unitPrice != null" >
+        UNIT_PRICE = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="taxRate != null" >
+        TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        WEIGHT = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="planExpense != null" >
+        PLAN_EXPENSE = #{planExpense,jdbcType=DECIMAL},
+      </if>
+      <if test="predictExpense != null" >
+        PREDICT_EXPENSE = #{predictExpense,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseId != null" >
+        WAREHOUSE_ID = #{warehouseId,jdbcType=DECIMAL},
+      </if>
+      <if test="warehouseArea != null" >
+        WAREHOUSE_AREA = #{warehouseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="transportCompany != null" >
+        TRANSPORT_COMPANY = #{transportCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="transportCompanyId != null" >
+        TRANSPORT_COMPANY_ID = #{transportCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="expenseStatus != null" >
+        EXPENSE_STATUS = #{expenseStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedByName != null" >
+        LAST_MODIFIED_BY_NAME = #{lastModifiedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedBy != null" >
+        LAST_MODIFIED_BY = #{lastModifiedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="lastModifiedIp != null" >
+        LAST_MODIFIED_IP = #{lastModifiedIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedTime != null" >
+        LAST_MODIFIED_TIME = #{lastModifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addedByName != null" >
+        ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      </if>
+      <if test="addedBy != null" >
+        ADDED_BY = #{addedBy,jdbcType=DECIMAL},
+      </if>
+      <if test="addedTime != null" >
+        ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="valid != null" >
+        VALID = #{valid,jdbcType=CHAR},
+      </if>
+    </set>
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.springBoot.test.model.TintransitExpensePo" >
+    update TINTRANSIT_EXPENSE
+    set INTRA_EXPENSE_CODE = #{intraExpenseCode,jdbcType=VARCHAR},
+      INTRA_DETAIL_CODE = #{intraDetailCode,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=DECIMAL},
+      SUBJECT = #{subject,jdbcType=VARCHAR},
+      UNIT_PRICE = #{unitPrice,jdbcType=DECIMAL},
+      TAX_RATE = #{taxRate,jdbcType=DECIMAL},
+      WEIGHT = #{weight,jdbcType=DECIMAL},
+      PLAN_EXPENSE = #{planExpense,jdbcType=DECIMAL},
+      PREDICT_EXPENSE = #{predictExpense,jdbcType=DECIMAL},
+      WAREHOUSE_ID = #{warehouseId,jdbcType=DECIMAL},
+      WAREHOUSE_AREA = #{warehouseArea,jdbcType=VARCHAR},
+      TRANSPORT_COMPANY = #{transportCompany,jdbcType=VARCHAR},
+      TRANSPORT_COMPANY_ID = #{transportCompanyId,jdbcType=VARCHAR},
+      EXPENSE_STATUS = #{expenseStatus,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      LAST_MODIFIED_BY_NAME = #{lastModifiedByName,jdbcType=VARCHAR},
+      LAST_MODIFIED_BY = #{lastModifiedBy,jdbcType=DECIMAL},
+      LAST_MODIFIED_IP = #{lastModifiedIp,jdbcType=VARCHAR},
+      LAST_MODIFIED_TIME = #{lastModifiedTime,jdbcType=TIMESTAMP},
+      ADDED_BY_NAME = #{addedByName,jdbcType=VARCHAR},
+      ADDED_BY = #{addedBy,jdbcType=DECIMAL},
+      ADDED_TIME = #{addedTime,jdbcType=TIMESTAMP},
+      VALID = #{valid,jdbcType=CHAR}
+    where PKID = #{pkid,jdbcType=DECIMAL}
+  </update>
+</mapper>
